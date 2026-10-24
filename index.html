@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的個人傳送門 | My LinkStack</title>
-    <!-- 引入 Font Awesome 圖標庫，用來顯示社群 icon -->
+    <title>簡裕軒的傳送門</title>
+    <!-- 引入 Font Awesome 圖標庫 -->
     <link rel="stylesheet" href="https://cloudflare.com">
     
     <style>
-        /* 1. 基礎重設與背景設定 */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -17,110 +16,103 @@
         }
 
         body {
-            /* 漸層背景，可自由更換顏色 */
-            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+            /* 1. 全螢幕背景圖設定（請記得把下面的網址換成你照片的實際網址） */
+            background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)), 
+                        url('https://unsplash.com') no-repeat center center fixed;
+            background-size: cover;
             color: #ffffff;
             display: flex;
             justify-content: center;
             align-items: flex-start;
             min-height: 100vh;
-            padding: 40px 20px;
+            padding: 60px 24px;
         }
 
-        /* 2. 主容器佈局 */
         .container {
             width: 100%;
-            max-width: 580px;
+            max-width: 480px;
             text-align: center;
         }
 
-        /* 3. 個人資訊區塊 */
+        /* 2. 個人資訊區塊 */
         .profile {
-            margin-bottom: 32px;
+            margin-bottom: 36px;
         }
 
         .avatar {
-            width: 96px;
-            height: 96px;
+            width: 110px;
+            height: 110px;
             border-radius: 50%;
             object-fit: cover;
-            border: 3px solid rgba(255, 255, 255, 0.2);
-            margin-bottom: 16px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
 
+        /* 放大名字與調整陰影 */
         .name {
-            font-size: 1.25rem;
+            font-size: 2.2rem;
             font-weight: 700;
-            margin-bottom: 8px;
-            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+            letter-spacing: 2px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
         }
 
+        /* 調整簡介大小與粗細 */
         .bio {
-            font-size: 0.9rem;
-            color: #94a3b8;
-            line-height: 1.5;
-            max-width: 80%;
+            font-size: 1.05rem;
+            font-weight: 500;
+            color: #ffffff;
+            line-height: 1.6;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+            max-width: 90%;
             margin: 0 auto;
         }
 
-        /* 4. 連結列表區塊 */
+        /* 3. 連結列表區塊 */
         .links-wrapper {
             display: flex;
             flex-direction: column;
-            gap: 16px; /* 按鈕之間的間距 */
-            margin-bottom: 40px;
+            gap: 14px;
         }
 
-        /* 5. 核心按鈕樣式 */
+        /* 4. 白色半透明框按鈕（磨砂玻璃質感） */
         .link-card {
             display: flex;
             align-items: center;
             justify-content: center;
-            position: relative;
-            padding: 16px 24px;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
+            padding: 14px 20px;
+            /* 背景透明，只有細白邊框 */
+            background: rgba(255, 255, 255, 0.12);
+            border: 1.5px solid rgba(255, 255, 255, 0.7);
+            border-radius: 14px;
             color: #ffffff;
             text-decoration: none;
+            font-size: 1.1rem;
             font-weight: 500;
+            letter-spacing: 1px;
             transition: all 0.25s ease;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+            /* 磨砂玻璃特效（模糊背景） */
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
         }
 
-        /* 讓 Icon 靠左固定，文字維持居中 */
+        /* 按鈕內的 Icon 樣式，微調間距 */
         .link-card i {
-            position: absolute;
-            left: 24px;
-            font-size: 1.25rem;
+            margin-right: 8px;
+            font-size: 1.1rem;
         }
 
-        /* 滑鼠懸停與點擊效果 */
+        /* 滑鼠懸停效果：變稍微亮一點 */
         .link-card:hover {
-            background: rgba(255, 255, 255, 0.16);
-            transform: translateY(-2px);
-            border-color: rgba(255, 255, 255, 0.25);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            background: rgba(255, 255, 255, 0.25);
+            border-color: #ffffff;
         }
 
         .link-card:active {
-            transform: translateY(0);
-        }
-
-        /* 6. 頁尾標籤 */
-        footer {
-            font-size: 0.8rem;
-            color: #64748b;
-        }
-
-        footer a {
-            color: #94a3b8;
-            text-decoration: none;
-        }
-        
-        footer a:hover {
-            text-decoration: underline;
+            transform: scale(0.98);
         }
     </style>
 </head>
@@ -129,47 +121,42 @@
     <div class="container">
         <!-- 個人資訊 -->
         <header class="profile">
-            <!-- 替換成你自己的頭像網址，或放本機圖片路徑 -->
+            <!-- 👈 頭像照片網址放這裡 -->
             <img class="avatar" src="https://unsplash.com" alt="Avatar">
-            <h1 class="name">@YourName</h1>
-            <p class="bio">這裡可以寫一句你的個人簡介、職稱或目前正在專注的事情。歡迎追蹤我的社群！</p>
+            <h1 class="name">簡裕軒</h1>
+            <p class="bio">面對世界現實，實現夢想價值</p>
         </header>
 
         <!-- 連結列表 -->
         <main class="links-wrapper">
             
-            <!-- 每個 a 標籤代表一個按鈕，按鈕文字與 icon 可自由修改 -->
-            <a href="https://yourwebsite.com" target="_blank" class="link-card">
-                <i class="fa-solid fa-globe"></i>
-                <span>個人官方網站</span>
+            <!-- 👈 記得把 href="#" 的 # 換成你實際的網頁連結 -->
+            <a href="#" target="_blank" class="link-card">
+                <i class="fa-regular fa-user"></i>
+                <span>個人頁面</span>
             </a>
 
-            <a href="https://instagram.com" target="_blank" class="link-card">
-                <i class="fa-brands fa-instagram"></i>
-                <span>Instagram</span>
+            <a href="#" target="_blank" class="link-card">
+                <i class="fa-solid fa-tv"></i>
+                <span>影劇大廳</span>
             </a>
 
-            <a href="https://youtube.com" target="_blank" class="link-card">
-                <i class="fa-brands fa-youtube"></i>
-                <span>YouTube 頻道</span>
+            <a href="#" target="_blank" class="link-card">
+                <i class="fa-solid fa-store"></i>
+                <span>線上商店</span>
             </a>
 
-            <a href="https://github.com" target="_blank" class="link-card">
-                <i class="fa-brands fa-github"></i>
-                <span>GitHub 專案</span>
+            <a href="#" target="_blank" class="link-card">
+                <i class="fa-regular fa-comments"></i>
+                <span>聊天平台</span>
             </a>
 
-            <a href="mailto:your-email@example.com" class="link-card">
-                <i class="fa-solid fa-envelope"></i>
-                <span>電子郵件聯絡</span>
+            <a href="#" target="_blank" class="link-card">
+                <i class="fa-solid fa-cloud-arrow-up"></i>
+                <span>雲端硬碟</span>
             </a>
 
         </main>
-
-        <!-- 頁尾 -->
-        <footer>
-            <p>© 2026 YourName. Powered by HTML & CSS.</p>
-        </footer>
     </div>
 
 </body>
